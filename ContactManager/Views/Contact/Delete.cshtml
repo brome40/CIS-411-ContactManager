@@ -3,8 +3,12 @@
 <h2>Delete Contact</h2>
 
 <form asp-controller="Contact" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ContactId"/>
+
     <div>Do you really want to delete <span class="fw-bold">@Model.FirstName @Model.LastName</span>?</div>
-    <button type="submit" class="btn btn-primary bg-black m-2">Yes</button>
+
+    <button type="submit" class="btn btn-secondary bg-black m-2">Yes</button>
+
     <a asp-controller="Contact" asp-action="Details" asp-route-id="@Model.ContactId"
-        asp-route-slug="@Model.Slug" class="btn btn-primary bg-black m-2">No</a>
+        asp-route-slug="@Model.Slug" class="btn btn-secondary bg-black m-2">No</a>
 </form>

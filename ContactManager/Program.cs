@@ -6,9 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Enable dependency injection
+// Enable dependency injection
 builder.Services.AddDbContext<ContactContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ContactContext")));
+
+// Make URL lowercase and add trailing slash before the Slug
+builder.Services.AddRouting(options => { 
+    options.LowercaseUrls = true;
+    options.AppendTrailingSlash = true;
+});
 
 var app = builder.Build();
 
